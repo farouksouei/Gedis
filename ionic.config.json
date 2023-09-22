@@ -1,0 +1,7 @@
+{
+  "name": "Gedis",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
