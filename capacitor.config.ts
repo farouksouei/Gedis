@@ -5,8 +5,12 @@ const config: CapacitorConfig = {
   appName: 'Gedis',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
-  }
+    androidScheme: 'https',
+  },
+  // android studio
+  android: {
+    allowMixedContent: true,
+    }
 };
 
 export default config;
