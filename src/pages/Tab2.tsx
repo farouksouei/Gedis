@@ -17,6 +17,7 @@ import {
 } from "@ionic/react";
 import { Geolocation } from "@capacitor/geolocation";
 import axios from "axios";
+import API_URL from "../env";
 
 const ShopForm: React.FC = () => {
   const [shop, setShop] = useState({
@@ -96,7 +97,7 @@ const ShopForm: React.FC = () => {
   const handleConfirmSubmit = () => {
     // Perform the form submission logic here
     axios
-      .post("http://wealthy-technology.com/apiv1/api/details/", shop)
+      .post("http://127.0.0.1:8000/apiv1/details/", shop)
       .then((response) => {
         console.log("Shop data submitted:", shop);
         // You can handle the response from the API here

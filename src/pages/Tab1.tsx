@@ -36,9 +36,11 @@ const Tab1: React.FC = () => {
   interface Shop {
     id: number;
     name: string;
+    phone: string;
     description: string;
     longitude: number;
     latitude: number;
+    conductor: string;
     google_maps_url: string;
   }
 
@@ -65,9 +67,7 @@ const Tab1: React.FC = () => {
 
   async function getShops(): Promise<void> {
     try {
-      const response = await fetch(
-        "http://wealthy-technology.com/apiv1/api/details/"
-      );
+      const response = await fetch("http://127.0.0.1:8000/apiv1/details/");
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -122,9 +122,7 @@ const Tab1: React.FC = () => {
     if (selectedShop) {
       console.log("Delete shop with id:", selectedShop.id);
       // Implement your delete logic here
-      axios.delete(
-        `http://wealthy-technology.com/apiv1/api/details/${selectedShop.id}/`
-      );
+      axios.delete(`http://127.0.0.1:8000/apiv1/details/${selectedShop.id}/`);
       // Refresh the shops list
       getShops();
 
@@ -185,20 +183,6 @@ const Tab1: React.FC = () => {
             </IonItem>
           ))}
         </IonCard>
-      </IonContent>
-      <IonContent>
-        {isOnline ? (
-          <IonText color="success">You are online</IonText>
-        ) : (
-          <IonText color="danger">You are offline</IonText>
-        )}
-        <IonButton onClick={() => setIsOnline(navigator.onLine)}>
-          Check Internet
-        </IonButton>
-      </IonContent>
-      <IonContent>
-        <IonButton onClick={handleTest}>Test</IonButton>
-        {test ? <IonText>True</IonText> : <IonText>False</IonText>}
       </IonContent>
 
       {/* Delete Confirmation Alert */}

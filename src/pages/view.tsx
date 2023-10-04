@@ -36,14 +36,12 @@ const ShopView: React.FC = () => {
     console.log("====================================");
     console.log("Shop ID:", shopId);
     console.log("====================================");
-    axios
-      .get(`http://wealthy-technology.com/apiv1/api/details/${shopId}/`)
-      .then((res) => {
-        console.log("====================================");
-        console.log("Shop Data:", res.data);
-        console.log("====================================");
-        setShop(res.data);
-      });
+    axios.get(`http://127.0.0.1:8000/apiv1/details/${shopId}/`).then((res) => {
+      console.log("====================================");
+      console.log("Shop Data:", res.data);
+      console.log("====================================");
+      setShop(res.data);
+    });
   }, []);
 
   return (

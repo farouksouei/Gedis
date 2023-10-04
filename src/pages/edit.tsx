@@ -62,10 +62,7 @@ const ShopFormEdit: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Add your logic to handle form submission here
-    axios.put(
-      `http://wealthy-technology.com/apiv1/api/details/${shopId}/`,
-      shop
-    );
+    axios.put(`http://127.0.0.1:8000/apiv1/details/${shopId}/`, shop);
     console.log("Shop data submitted:", shop);
     // You can send the shop data to your API or perform other actions as needed
   };

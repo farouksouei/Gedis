@@ -17,11 +17,6 @@ import Tab3 from "./pages/Tab3";
 import ShopView from "./pages/view";
 import ShopFormEdit from "./pages/edit";
 
-import { AndroidPermissions } from "@ionic-native/android-permissions";
-import { LocationAccuracy } from "@ionic-native/location-accuracy";
-import { Capacitor } from "@capacitor/core";
-import { LocationService } from "./utils/Location";
-
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 
