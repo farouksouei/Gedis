@@ -1,5 +1,5 @@
 {
-  "name": "Gedis",
+  "name": "Spdis",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -48,6 +48,7 @@
     "eslint": "^8.35.0",
     "eslint-plugin-react": "^7.32.2",
     "jsdom": "^22.1.0",
+    "terser": "^5.31.1",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vitest": "^0.32.2"

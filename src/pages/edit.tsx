@@ -42,7 +42,7 @@ const ShopFormEdit: React.FC = () => {
     console.log("Shop ID:", shopId);
     console.log("====================================");
     axios
-      .get(`http://wealthy-technology.com/apiv1/api/details/${shopId}/`)
+      .get(`https://06a1-196-178-181-193.ngrok-free.app/apiv1/api/details/${shopId}/`)
       .then((res) => {
         console.log("====================================");
         console.log("Shop Data:", res.data);

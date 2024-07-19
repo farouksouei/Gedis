@@ -13,7 +13,7 @@ import {
   IonCard,
   IonCardHeader,
   IonAlert,
-  IonToast,
+  IonToast, IonSelectOption, IonSelect,
 } from "@ionic/react";
 import { Geolocation } from "@capacitor/geolocation";
 import axios from "axios";
@@ -27,6 +27,9 @@ const ShopForm: React.FC = () => {
     latitude: "",
     google_maps_url: "",
     rank: 0,
+    numero_tel: "",
+    secteur: "",
+    series: "",
   });
   const [showConfirm, setShowConfirm] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -97,7 +100,7 @@ const ShopForm: React.FC = () => {
   const handleConfirmSubmit = () => {
     // Perform the form submission logic here
     axios
-      .post("http://127.0.0.1:8000/apiv1/details/", shop)
+      .post("https://06a1-196-178-181-193.ngrok-free.app/apiv1/details/", shop)
       .then((response) => {
         console.log("Shop data submitted:", shop);
         // You can handle the response from the API here
@@ -186,15 +189,53 @@ const ShopForm: React.FC = () => {
                 ></IonInput>
               </IonItem>
               <IonItem>
-                <IonLabel position="floating">Rank</IonLabel>
+                <IonLabel>Rank</IonLabel>
+                <IonSelect
+                    name="rank"
+                    value={shop.rank}
+                    onIonChange={handleChange}
+                    interface="popover" // Optional: change the interface type as needed
+                >
+                  <IonSelectOption value="A">A</IonSelectOption>
+                  <IonSelectOption value="B">B</IonSelectOption>
+                  <IonSelectOption value="C">C</IonSelectOption>
+                  <IonSelectOption value="D">D</IonSelectOption>
+                </IonSelect>
+              </IonItem>
+
+              <IonItem>
+                <IonLabel position="floating">Numero Tel</IonLabel>
                 <IonInput
-                  type="number"
-                  name="rank"
-                  value={shop.rank}
-                  onIonChange={handleChange}
-                  min="1" // Set the minimum value to 1
-                  max="5" // Set the maximum value to 5
-                  required
+                    type="tel"
+                    name="numero_tel"
+                    value={shop.numero_tel}
+                    onIonChange={handleChange}
+                    maxLength={100} // Set the maximum length to 100
+                    required
+                ></IonInput>
+              </IonItem>
+
+              <IonItem>
+                <IonLabel position="floating">Secteur</IonLabel>
+                <IonInput
+                    type="text"
+                    name="secteur"
+                    value={shop.secteur}
+                    onIonChange={handleChange}
+                    maxLength={100} // Set the maximum length to 100
+                    required
+                ></IonInput>
+              </IonItem>
+
+              <IonItem>
+                <IonLabel position="floating">Series</IonLabel>
+                <IonInput
+                    type="text"
+                    name="series"
+                    value={shop.series}
+                    onIonChange={handleChange}
+                    maxLength={100} // Set the maximum length to 100
+                    required
                 ></IonInput>
               </IonItem>
             </IonList>

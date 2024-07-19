@@ -67,17 +67,12 @@ const Tab1: React.FC = () => {
 
   async function getShops(): Promise<void> {
     try {
-      const response = await fetch("http://127.0.0.1:8000/apiv1/details/");
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log(data);
-      setShops(data);
+      const response = await axios.post('https://06a1-196-178-181-193.ngrok-free.app/apiv1/details/get-organization-detail/');
+      console.log(response.data);
+      setShops(response.data);
     } catch (error) {
       console.error(error);
+      // Optionally, handle the error response here
     }
   }
 
@@ -122,7 +117,7 @@ const Tab1: React.FC = () => {
     if (selectedShop) {
       console.log("Delete shop with id:", selectedShop.id);
       // Implement your delete logic here
-      axios.delete(`http://127.0.0.1:8000/apiv1/details/${selectedShop.id}/`);
+      axios.delete(`https://06a1-196-178-181-193.ngrok-free.app/apiv1/details/${selectedShop.id}/`);
       // Refresh the shops list
       getShops();
 

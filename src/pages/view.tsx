@@ -30,13 +30,17 @@ const ShopView: React.FC = () => {
     latitude: "",
     google_maps_url: "",
     rank: 0,
+    secteur: "",
+    numero_tel: "",
   });
 
   useEffect(() => {
     console.log("====================================");
     console.log("Shop ID:", shopId);
     console.log("====================================");
-    axios.get(`http://127.0.0.1:8000/apiv1/details/${shopId}/`).then((res) => {
+    axios.post(`https://06a1-196-178-181-193.ngrok-free.app/apiv1/details/get-organization-detail-by-id/`, {
+      id:shopId
+    }).then((res) => {
       console.log("====================================");
       console.log("Shop Data:", res.data);
       console.log("====================================");
@@ -88,6 +92,17 @@ const ShopView: React.FC = () => {
                 <IonLabel>Rank:</IonLabel>
                 <IonText>{shop.rank}</IonText>
               </IonItem>
+
+              <IonItem>
+                <IonLabel>Secteur:</IonLabel>
+                <IonText>{shop.secteur}</IonText>
+              </IonItem>
+
+              <IonItem>
+                <IonLabel>Numero:</IonLabel>
+                <IonText>{shop.numero_tel}</IonText>
+              </IonItem>
+
             </IonList>
           </IonCardContent>
         </IonCard>
